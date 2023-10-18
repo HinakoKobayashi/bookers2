@@ -29,7 +29,7 @@
 
 
 
- <h2>Books</h2>
+<h2>Books</h2>
 
 <table class="book-list">
 
@@ -46,12 +46,16 @@
 <tr>
   <td>
 <% if @user.image.attached? %>
+  <%= link_to user_path(@user.id) do %>
   <%= image_tag @user.image, size: "100x100" %>
+  <% end %>
 <% else %>
+  <%= link_to user_path(@user.id) do %>
   <%= image_tag 'no_image', size: "100x100" %>
+  <% end %>
 <% end %>
   </td>
-  <td class="book-data"><%= book.title %></td>
+  <td class="book-data"><%= link_to book.title, book_path(book.id) %></td>
   <td class="book-data"><%= book.body %></td>
 </tr>
 <% end %>
