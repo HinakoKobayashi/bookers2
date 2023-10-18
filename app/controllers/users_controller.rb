@@ -3,8 +3,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @user = User.find(params[:id])
-    @user = @book.user
+    @user = User.new
     @users = User.all
   end
 
@@ -18,7 +17,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    redirect_to user_path(@user.id)
+    redirect_to user_path(params[:id])
   end
 
 
@@ -33,6 +32,14 @@ class UsersController < ApplicationController
     unless user.id == current_user.id
       redirect_to user_path
     end
+  end
+
+  def get_image
+    unless image.attached?
+      file_path = Rails.root.join('app/assets/images/no_image.jpg')
+      image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+    end
+      @user.image
   end
 
 end
