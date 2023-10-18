@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user!, only: [:edit, :update, :destroy]
 
   def new
   end
@@ -18,18 +19,22 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    @book_new = Book.new
+    @user = @book.user
   end
 
   def edit
     @book = Book.find(params[:id])
-    @booke.user_id = current_user.id
-    @book.destroy
-    redirect_to books_path(params[:id])
+  end
+
+  def update
+    @book = Book.find(params[:id])
+    @book.update(book_params)
+    redirect_to book_path(params[:id])
   end
 
   def destroy
     @book = Book.find(params[:id])
-    @booke.user_id = current_user.id
     @book.destroy
     redirect_to books_path(params[:id])
   end
