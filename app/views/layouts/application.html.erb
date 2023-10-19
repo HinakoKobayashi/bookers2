@@ -44,6 +44,13 @@
     <% end %>
   </header>
 
+
+  <% flash.each do |key, message| %>
+   <div class="alert alert-<%= bootstrap_class_for_flash(key) %>">
+    <%= message %>
+   </div>
+  <% end %>
+
     <%= yield %>
 
     <footer>CopyRight Infratop.inc</footer>
