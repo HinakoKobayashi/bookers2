@@ -7,8 +7,12 @@
   </ul>
 <% end %>
 
-<%= render 'sidebar', user: @user, book: @book %>
+<div class="container">
+<div class="row">
 
+<div class="col-md-3">
+<%= render 'sidebar', user: @user, book: @book %>
+</div>
 
 <h2>Books</h2>
 
@@ -26,12 +30,12 @@
 <% @books.each do |book| %>
 <tr>
   <td>
-<% if @user.profile_image.attached? %>
-  <%= link_to user_path(@user.id) do %>
-  <%= image_tag @user.profile_image, size: "100x100" %>
+<% if book.user.profile_image.attached? %>
+  <%= link_to user_path(book.user.id) do %>
+  <%= image_tag book.user.profile_image, size: "100x100" %>
   <% end %>
 <% else %>
-  <%= link_to user_path(@user.id) do %>
+  <%= link_to user_path(book.user.id) do %>
   <%= image_tag 'no_image', size: "100x100" %>
   <% end %>
 <% end %>
@@ -43,4 +47,7 @@
 </tbody>
 
 </table>
+</div>
 
+</div>
+</div>

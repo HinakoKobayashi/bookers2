@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :introduction, :user_image)
+    params.require(:user).permit(:name, :introduction, :profile_image)
   end
 
   def is_matching_login_user
@@ -47,10 +47,10 @@ class UsersController < ApplicationController
     end
   end
 
-  def get_image
-    unless image.attached?
+  def get_profile_image
+    unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
-      image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+      profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
       @user.profile_image
   end
