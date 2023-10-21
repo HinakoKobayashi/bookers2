@@ -7,9 +7,9 @@
 <tbody>
 <tr>
   <td>
-<% if @user.image.attached? %>
+<% if @user.profile_image.attached? %>
   <%= link_to user_path(@user.id) do %>
-  <%= image_tag @user.image, size: "100x100" %>
+  <%= image_tag @user.profile_image, size: "100x100" %>
   <% end %>
 <% else %>
   <%= link_to user_path(@user.id) do %>

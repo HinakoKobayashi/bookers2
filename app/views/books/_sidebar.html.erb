@@ -2,8 +2,8 @@
 
 <h2>User info</h2>
 
-<% if user.image.attached? %>
-  <%= image_tag user.image, size: "100x100" %>
+<% if user.profile_image.attached? %>
+  <%= image_tag user.profile_image, size: "100x100" %>
 <% else %>
   <%= image_tag 'no_image', size: "100x100" %>
 <% end %>
@@ -23,7 +23,7 @@
  </table>
 
   <div class="row">
-  <%= link_to edit_user_path(user), class = "btn btn-outline-secondary btn-block", do %>
+  <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
   <i class="fa-solid fa-user-gear" style="color: #76797f;"></i>
   <% end %>
   </div>

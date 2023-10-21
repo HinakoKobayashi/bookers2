@@ -17,12 +17,10 @@ class UsersController < ApplicationController
   end
 
   def edit
-    user = User.find(params[:id])
-   unless user.id == current_user.id
-    redirect_to user_path(@user)
-   end
-
     @user = User.find(params[:id])
+   unless @user.id == current_user.id
+    redirect_to user_path(current_user.id)
+   end
   end
 
 
@@ -54,7 +52,7 @@ class UsersController < ApplicationController
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-      @user.image
+      @user.profile_image
   end
 
 end
