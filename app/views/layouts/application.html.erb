@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <script src="https://kit.fontawesome.com/*******.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -13,43 +15,66 @@
   <body>
 
   <header>
-  <div class="collapse" id="navbarToggleExternalContent" data-bs-theme="dark">
-  <div class="bg-dark p-4">
-     <li>
-      <h5 class="text-body-emphasis h4">
-         <%= link_to "Bookers", root_path %>
-      </h5>
-     </li>
-  </div>
- 
-     <li>
-       <%= link_to "Home",  root_path %>
-     </li>
+    <nav class = "navbar navbar-expand-lg navbar-dark bg-dark">
+     <div class = "container">
+      <a class = "navbar-brand text-body-emphasis h4" href ="/">
+         <span>Bookers</span>
+      </a>
+     </div>
 
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to "Users", users_path %>
-     </li>
-     <li>
-        <%= link_to "Books", books_path %>
-     </li>
-      <li>
-        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-      </li>
+     <button class = "navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+     </button>
 
-    <% else %>
-      <li>
-        <%= link_to "About", about_path %>
-      </li>
-      <li>
-        <%= link_to "Sign up", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "Log in", new_user_session_path %>
-      </li>
-    <% end %>
-  </div>
-  </div>
+     <div class = "collapse navbar-collapse" id="navbarNavDropdown">
+     <ul class ="navbar-nav ml-auto text-light bg-dark">
+       <li>
+         <%= link_to root_path, class: "nav-link text-light bg-dark bg-dark text-nowrap", style:"color: #ffffff;" do %>
+         <i class="fa-solid fa-house" style="color: #ffffff;"></i>Home
+         <% end %>
+       </li>
+
+      <% if user_signed_in? %>
+        <li>
+          <%= link_to users_path, class: "nav-link text-light bg-dark bg-dark text-nowrap", style:"color: #ffffff;" do %>
+          <i class="fa-solid fa-users" style="color: #ffffff;"></i>Users
+          <% end %>
+       </li>
+
+       <li>
+         <%= link_to books_path, class: "nav-link text-light bg-dark bg-dark text-nowrap", style:"color: #ffffff;" do %>
+         <i class="fa-solid fa-book-open" style="color: #ffffff;"></i>Books
+         <% end %>
+       </li>
+
+        <li>
+          <%= link_to destroy_user_session_path, class: "nav-link text-light bg-dark bg-dark text-nowrap", style:"color: #ffffff;", method: :delete do %>
+          <i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i>Log out
+          <% end %>
+        </li>
+
+      <% else %>
+        <li>
+          <%= link_to about_path, class: "nav-link text-light bg-dark bg-dark text-nowrap", style:"color: #ffffff;" do %>
+          <i class="fa-solid fa-link" style="color: #ffffff;"></i>About
+          <% end %>
+        </li>
+
+        <li>
+          <%= link_to new_user_registration_path, class: "nav-link text-light bg-dark bg-dark text-nowrap", style:"color: #ffffff;" do %>
+          <i class="fa-solid fa-user-plus" style="color: #ffffff;"></i>Sing up
+          <% end %>
+        </li>
+
+        <li>
+          <%= link_to new_user_session_path, class: "nav-link text-light bg-dark bg-dark text-nowrap", style:"color: #ffffff;" do %>
+          <i class="fa-solid fa-right-to-bracket" style="color: #ffffff;"></i>Log in
+          <% end %>
+        </li>
+      <% end %>
+     </ul>
+     </div>
+    </nav>
   </header>
 
 
