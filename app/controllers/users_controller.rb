@@ -23,11 +23,14 @@ class UsersController < ApplicationController
    end
   end
 
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
 
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-    redirect_to user_path(@user), notice: "You have updated user information!"
+    redirect_to user_path(@user), notice: "User information updated successfully!"
     else
     render "edit"
     end
