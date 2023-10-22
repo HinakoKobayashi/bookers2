@@ -28,13 +28,13 @@
 
      <div class = "collapse navbar-collapse" id="navbarNavDropdown">
      <ul class ="navbar-nav ml-auto text-light bg-dark">
-       <li>
-         <%= link_to root_path, class: "nav-link text-light bg-dark bg-dark text-nowrap", style:"color: #ffffff;" do %>
-         <i class="fa-solid fa-house" style="color: #ffffff;"></i>Home
-         <% end %>
-       </li>
 
       <% if user_signed_in? %>
+        <li>
+         <%= link_to user_path(current_user), class: "nav-link text-light bg-dark bg-dark text-nowrap", style:"color: #ffffff;" do %>
+         <i class="fa-solid fa-house" style="color: #ffffff;"></i>Home
+         <% end %>
+        </li>
         <li>
           <%= link_to users_path, class: "nav-link text-light bg-dark bg-dark text-nowrap", style:"color: #ffffff;" do %>
           <i class="fa-solid fa-users" style="color: #ffffff;"></i>Users
@@ -54,6 +54,11 @@
         </li>
 
       <% else %>
+        <li>
+         <%= link_to root_path, class: "nav-link text-light bg-dark bg-dark text-nowrap", style:"color: #ffffff;" do %>
+         <i class="fa-solid fa-house" style="color: #ffffff;"></i>Home
+         <% end %>
+        </li>
         <li>
           <%= link_to about_path, class: "nav-link text-light bg-dark bg-dark text-nowrap", style:"color: #ffffff;" do %>
           <i class="fa-solid fa-link" style="color: #ffffff;"></i>About

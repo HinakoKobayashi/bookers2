@@ -5,33 +5,34 @@
 <%= render 'sidebar', user: @user, book: @book_new %>
 </div>
 
+<div class="col-md-8 offset-md-1">
 <h2>Book detail</h2>
-<table class="book-list">
+<table class="table table-hover table-inverse">
+  <tbody>
+    <tr>
 
-<tbody>
-<tr>
-  <td>
-<% if @user.profile_image.attached? %>
-  <%= link_to user_path(@user.id) do %>
-  <%= image_tag @user.profile_image, size: "100x100" %>
-  <% end %>
-<% else %>
-  <%= link_to user_path(@user.id) do %>
-  <%= image_tag 'no_image', size: "100x100" %>
-  <% end %>
-<% end %>
-  <br><%= @user.name %></td>
-  <td class="book-data"><%= link_to @book.title, book_path(@book.id) %></td>
-  <td class="book-data"><%= @book.body %></td>
-    <% if @user == current_user %>
-      <td><%= link_to "Edit", edit_book_path %></td>
-      <td><%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか？" %></td>
-    <% else %>
-      <td></td>
-      <td></td>
-    <% end %>
-</tr>
-</tbody>
+      <td>
+        <%= link_to user_path(@user.id) do %>
+          <% if @user.profile_image.attached? %>
+
+            <%= image_tag @user.profile_image, size: "100x100" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "100x100" %>
+          <% end %>
+          <br><%= @user.name %>
+        <% end %>
+      </td>
+      <td class="book-data"><%= link_to @book.title, book_path(@book.id) %></td>
+      <td class="book-data"><%= @book.body %></td>
+        <% if @user == current_user %>
+          <td><%= link_to "Edit", edit_book_path %></td>
+          <td><%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか？" %></td>
+        <% else %>
+          <td></td>
+          <td></td>
+        <% end %>
+    </tr>
+  </tbody>
 
 </table>
 </div>

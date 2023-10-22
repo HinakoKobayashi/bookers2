@@ -8,8 +8,7 @@
 <div class="col-md-8 offset-md-1">
 <h2>Users</h2>
 
-<table class="user-list">
-
+<table class="table table-hover table-inverse">
   <thead>
     <tr class="thead">
       <th class="user-data">image</th>
@@ -22,14 +21,14 @@
 <% @users.each do |user| %>
 <tr>
   <td>
-<% if @user.profile_image.attached? %>
-  <%= image_tag @user.profile_image, size: "100x100" %>
+<% if user.profile_image.attached? %>
+  <%= image_tag user.profile_image, size: "100x100" %>
 <% else %>
   <%= image_tag 'no_image', size: "100x100" %>
 <% end %>
   </td>
   <td class="book-data"><%= user.name %></td>
-   <td class="book-data"><%= link_to "Show", user_path(user.id) %></td>
+  <td class="book-data"><%= link_to "Show", user_path(user.id) %></td>
 </tr>
 <% end %>
 </tbody>
